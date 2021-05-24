@@ -285,7 +285,8 @@ app.post('/detect', async (req, res) => {
         result.forEach(e => {
             B[e.description] = new Span(e.firstTimeStep, e.lastTimeStep)
         });
-        res.send(B)
+        res.send(JSON.stringify(B))
+        // res.send(B)
     })
 });
 
