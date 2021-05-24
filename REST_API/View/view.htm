@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Anomaly Detection Server</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- Write your comments here  <A HREF="file:///C:\temp\" </A> 
+ <a href="C:\">Open</a>-->
+ <style>
+  .container {
+    height: 200px;
+    position: relative;
+    border: 3px solid green;
+  }
+  
+
+  .center {
+  margin: 0;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+  </style>
+<div class="center">
+  <div class="grid-con">
+  	<label for="Algo">Choose an Algorithm:</label>
+	<select name="algo" id="algo">
+  	<option value="reg">Reg</option>
+  	<option value="hybrid">Hybrid</option>
+	</select>
+  </div>
+  <div class="grid-con">
+   <!-- <label for="Algo">Choose CSV without (path):</label>
+    <input type="text" id="CSVwithoutPath" value="Enter CSV without file path"> -->
+    <label for="CSVwithoutPath">anomaly</label>
+<input type="file" id="CSVwithoutPath" name="myfile">
+  </div>
+  <div class="grid-con">
+    <!-- <label for="Algo">Choose CSV with (path):</label>
+    <input type="text" id="CSVwithPath" value="Enter CSV with file path"> -->
+    <label for="CSVwithPath">Choose CSV 2</label>
+    <input type="file" id="CSVwithPath" name="myfile">
+  </div>
+  <div class="grid-con">
+    <button type="button" onclick="myFunction()">
+      Upload
+    </button>
+  </div>
+  <div class="grid-con">
+  	<p id="demoHide" style="display:none">The anomalies are:</p>
+  </div>
+</div>
+<div class="grid-con">
+<h2>Saved to varibales</h2>
+
+<p id="demo">The choosen algo is:</p>
+
+<script src="vm.js"></script>
+<!-- <body onLoad="buildHtmlTable('#excelDataTable')">
+    <table id="excelDataTable" border="1px">
+    </table> -->
+</div>
+</div>
+</body>
+</html>
