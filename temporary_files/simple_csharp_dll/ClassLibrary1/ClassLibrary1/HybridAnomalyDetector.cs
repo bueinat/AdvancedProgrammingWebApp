@@ -37,16 +37,12 @@ namespace ClassLibrary1
                 }
                 string f2 = atts[jmax];
                 Point[] ps = ToPoints(ts.GetAttributeData(f1), ts.GetAttributeData(f2));
-
-                //Console.WriteLine(f1 + "   " + f2);
-
                 LearnHelper(ts, max, f1, f2, ps);
             }
         }
 
         internal static void Reset()
         {
-            // Console.WriteLine("Hybrid Reset");
             cf = new List<CorrelatedFeatures>();
         }
 
@@ -55,7 +51,6 @@ namespace ClassLibrary1
             RegressionAnomalyDetector.LearnHelper(ts, p, f1, f2, ps);
             if (p > 0.5 && p < threshold)
             {
-                //Console.WriteLine(f1 + ", " + f2);
                 Circle cl = Circle.FindMinCircle(ps, ts.GetRowSize());
                 CorrelatedFeatures c = new CorrelatedFeatures(f1, f2, p, null, cl.Radius * 1.1,
                     cl.Center.X, cl.Center.Y, true);
@@ -85,7 +80,6 @@ namespace ClassLibrary1
 
         private static bool IsAnomalous(double x, double y, CorrelatedFeatures c)
         {
-            //return (Math.Abs(y - c.lin_reg.f(x)) > c.threshold);
             return (c.Correlation >= threshold && RegressionAnomalyDetector.IsAnomalous(x, y, c)) ||
         (c.Correlation > 0.5 && c.Correlation < threshold && Circle.Dist(new Point(c.Cx, c.Cy), new Point(x, y)) > c.Threshold);
         }

@@ -6,7 +6,6 @@ namespace ClassLibrary1
 {
     internal class RegressionAnomalyDetector : AnomalyDetector
     {
-        // private static int total = 0;
 
         public static void LearnNormal(TimeSeries ts)
         {
@@ -42,13 +41,10 @@ namespace ClassLibrary1
 
                 LearnHelper(ts, max, f1, f2, ps);
             }
-            // Console.WriteLine(cf.Count());
         }
 
         internal static void Reset()
         {
-
-            // Console.WriteLine("Regression Reset");
             cf = new List<CorrelatedFeatures>();
         }
 
@@ -56,13 +52,11 @@ namespace ClassLibrary1
         {
             if (p > threshold)
             {
-                // Console.WriteLine(f1 + "   " + f2);
                 int len = ts.GetRowSize();
                 Line reg = AnomalyDetectionUtil.LinearReg(ps, len);
                 CorrelatedFeatures c = new CorrelatedFeatures(f1, f2, p, reg,
                     RegressionAnomalyDetector.FindThreshold(ps, len, reg) * 1.1, 0, 0, false);
                 cf.Add(c);
-                // Console.WriteLine(c.Feature1 + ", " + c.Feature2 + " , " + c.Threshold);
             }
         }
 
@@ -78,11 +72,8 @@ namespace ClassLibrary1
                     
                     if (IsAnomalous(x.ElementAt(i), y.ElementAt(i), c))
                     {
-                        // Console.WriteLine($" - {i}");
                         string d = c.Feature1 + "!" + c.Feature2;
                         v.Add(new AnomalyReport(d, (i + 1)));
-                        // total++;
-                        // Console.WriteLine(total++);
                     }
                 }
             }
@@ -92,8 +83,6 @@ namespace ClassLibrary1
         public static bool IsAnomalous(double x, double y, CorrelatedFeatures c)
         {
             double diff = Math.Abs(y - c.LinReg.F(x));
-            // if (c.Feature1 == "throttle" && c.Feature2 == "engine_rpm" && diff > 1000)
-                // Console.WriteLine($"diff = {diff} < {c.Threshold}");
             return (diff > c.Threshold);
         }
     }
