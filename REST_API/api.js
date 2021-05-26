@@ -53,12 +53,14 @@ var learn_from_csv = edge.func({
 app.use(express.static('View'))
 //Get Method for '/' url
 app.get('/', (req, res) => {
-    res.sendFile('index.htm')
+    res.sendFile('view.htm')
 })
 
 // send via post 2 csv files + model type (as query) and get some dummy data (as for now)
 app.post('/detect', async (req, res) => {
-    // console.log(req.body)
+    // var json = ('[{ "name":"John", "age":30, "city":"New York"}]');
+    // res.send(json);
+    // return;
     // get model type from query line. send by /?model_type=<model_type>
     const schema_query = Joi.object({
         model_type: Joi.string().valid('regression', 'hybrid').required()
@@ -68,11 +70,12 @@ app.post('/detect', async (req, res) => {
     const result_query = schema_query.validate(req.body);
 
     // throw an error if wrong
-    if (result_query.error) {
-        res.status(400).send(result_query.error.details[0].message);
-        return;
-    }
+     if (result_query.error) {
+         res.status(400).send(result_query.error.details[0].message);
+         return;
+     }
 
+    console.log(250);
     if (!req.files)
         return res.status(400).send("No file uploaded");
     if (!req.files.learn_csv)
@@ -102,9 +105,10 @@ app.post('/detect', async (req, res) => {
     let data = {
         "csv_learn": uploaded_learn_name, 
         "csv_anomaly": uploaded_anomaly_name, 
-        "model_type": req.body.model_type, 
+        "model_type": req.query.model_type, //TO RETURN IT BACK
         "passed_data_type": "csv"
     }
+    console.log(283);
 
     console.log(data)
     // run c# code asynchoniously (TODO: figure out what ecxatly should be ran this way)
@@ -112,13 +116,16 @@ app.post('/detect', async (req, res) => {
         console.log("parsing data")
         // before submitting, we have to change it to print error and remove model
         // if (error) throw error;
+        // console.log(error);
+        console.log(29);
         if (error) return res.status(400).send(`error passed from model: ${error.message}`)
         models_list[id].status = "ready"
         B = {}
         result.forEach(e => {
             B[e.description] = new Span(e.firstTimeStep, e.lastTimeStep)
         });
-        console.log("returning B")
+        console.log(296);
+        console.log(B);
         res.send(JSON.stringify(B))
         // res.send(B)
     })

@@ -10,7 +10,7 @@ function myFunction() {
     form.append("learn_csv", withPath.files[0]);
   
    var settings = {
-      "url": "http://localhost:8080/detect",
+      "url": "http://localhost:8080/detect?model_type="+document.getElementById('algo').value,
       "method": "POST",
       "timeout": 0,
       "processData": false,
@@ -23,48 +23,48 @@ function myFunction() {
      console.log(response);
      var json =JSON.parse(response);
      console.log(json);
+     buildHtmlTable([json]) 
     });
   
   }
 
 
   
- // Builds the HTML Table out of json.
-// function buildHtmlTable(selector) {
-//   console.log(json);
-//   var columns = addAllColumnHeaders(json, selector);
-
-//   for (var i = 0; i < json.length; i++) {
-//     var row$ = $('<tr/>');
-//     for (var colIndex = 0; colIndex < columns.length; colIndex++) {
-//       var cellValue = json[i][columns[colIndex]];
-//       if (cellValue == null) cellValue = "";
-//       row$.append($('<td/>').html(cellValue));
-//     }
-//     $(selector).append(row$);
-//   }
-// }
+ //Builds the HTML Table out of json.
+function buildHtmlTable(json) {
+  var columns = addAllColumnHeaders(json);
+  var selector=document.getElementById('excelDataTable');
+  for (var i = 0; i < json.length; i++) {
+    var row$ = $('<tr/>');
+    for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+      var cellValue = json[i][columns[colIndex]];
+      if (cellValue == null) cellValue = "";
+      row$.append($('<td/>').html(cellValue));
+    }
+    $(selector).append(row$);
+  }
+}
 
 // Adds a header row to the table and returns the set of columns.
 // Need to do union of keys from all records as some records may not contain
 // all records.
-// function addAllColumnHeaders(json, selector) {
-//   var columnSet = [];
-//   var headerTr$ = $('<tr/>');
+function addAllColumnHeaders(json) {
+  var columnSet = [];
+  var headerTr$ = $('<tr/>');
+  var selector=document.getElementById('excelDataTable');
 
-//   for (var i = 0; i < json
-//     .length; i++) {
-//     var rowHash = json
-//     [i];
-//     for (var key in rowHash) {
-//       if ($.inArray(key, columnSet) == -1) {
-//         columnSet.push(key);
-//         headerTr$.append($('<th/>').html(key));
-//       }
-//     }
-//   }
-//   $(selector).append(headerTr$);
+  for (var i = 0; i < json.length; i++) {
+    var rowHash = json
+    [i];
+    for (var key in rowHash) {
+      if ($.inArray(key, columnSet) == -1) {
+        columnSet.push(key);
+        headerTr$.append($('<th/>').html(key));
+      }
+    }
+  }
+  $(selector).append(headerTr$);
 
-//   return columnSet;
-// }
+  return columnSet;
+}
 
