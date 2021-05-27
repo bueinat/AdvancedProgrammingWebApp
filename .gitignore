@@ -122,3 +122,5 @@ temporary_files/ConsoleApp1/.vs/anomallyDetectorDLL/v16/.suo
 temporary_files/ConsoleApp1/obj/anomallyDetectorDLL.csproj.nuget.g.props
 temporary_files/ConsoleApp1/obj/anomallyDetectorDLL*
 temporary_files/ConsoleApp1/bin/Debug/netcoreapp3.1/anomallyDetectorDLL.dll
+anomalyDetectionAlgo/.vs/ClassLibrary1/v16/.suo
+anomalyDetectionAlgo/ClassLibrary1/obj/Debug/ClassLibrary1.csprojAssemblyReference.cache
