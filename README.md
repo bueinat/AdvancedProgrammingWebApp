@@ -3,21 +3,18 @@
 web app project for advanced programming project in BIU
 
 
-פיצ'רים מיוחדים- ארכיטקטורת MVC, תקשורת בעזרת בקשות http ושרת שמאזין להם ובסוף שולח תשובה. המידע נשלח כקובץ JSON.
+## Special features
+We used design pattern called mvc, that mean that all the project separate to 3 different parts:
+**The view**  that responsible to the user interface (get the information from the user, and show him the final result).
+**The model** that call to outern libraries like the anomaly detect algorithm to use calculate on the information, and return the result.
+**The controller** that operate the model and the controller, and linking between them.
+Another feature is the communication between the user and the program. The program functioning as a server that waiting to requests from the client, that this is the user, who send the information and get the request in http protocol.
 
-תיקיות בפרויקט:
-REST_API  
-בתוכה יש:
-* את view תיקייה שבה יש את הקבצים vm.js, וindex.html שאחראים על התצוגה של הממשק משתמש
-upload*- תיקייה שבה יש קבצי csv שניתן ללמוד אותם ולבדוק בהם חריגות
-*api.js – קובץ שמכיל גם את המודל וגם את הקונטרולר (עינת צריכה לפצל אותו ל2 נפרדים)
-*result.html, result.js- נעה אמרה לי שהם מיותרים ואפשר למחוק אותם
+## Directories in the project:
+**Design Details** – consist a file that represent the UML scheme
+**anomalyDetectionAlgo** – consist mostly the c# files that using to anomaly detection
+**webApp** – consist the project's primary files. Inside there is directories to the View, to the Model and to the controller, that each of them consist the corresponded parts from the MVC design pattern. The Controller directory consist also the csv files that uploaded to the algorithm.
 
-temporary_filed
-בתוכה יש את הקבצים שמשמשים לזיהוי החריגות (כנראה שנשנה עוד את השם שלה וקצת את התוכן שלה)
-
-התקנות:
-ניתן להשתמש בתוכנה node.js ולפני זה להתקין בו את ההתקנות הבאות:
 
 ## Installations
 The only required platform for running the server is `node`. You can download it in their website: https://nodejs.org/   
