@@ -18,7 +18,7 @@ var detect_from_CSVs = edge.func({
 });
 
 function handle(error, result) {
-        if (error) return res.status(400).send(`error passed from model: ${error.message}`)
+        if (error) throw error; // return res.status(400).send(`error passed from model: ${error.message}`)
         B = {}
         result.forEach(e => {
             B[e.description] = new Span(e.firstTimeStep, e.lastTimeStep)

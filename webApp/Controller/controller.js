@@ -43,7 +43,7 @@ app.post('/detect', async (req, res) => {
     });
 
     // validate query
-    const result_query = schema_query.validate(req.body);
+    const result_query = schema_query.validate(req.query);
 
     // throw an error if wrong
     if (result_query.error) {
@@ -78,5 +78,13 @@ app.post('/detect', async (req, res) => {
         "model_type": req.query.model_type,
         "passed_data_type": "csv"
     }
-    res.send(model.detect(data));
+    try {
+        console.log("trying...")
+        res.send(model.detect(data))
+    } catch(e) {
+        console.log("hey")
+        res.status(400).send(`error passed from model: ${error.message}`)
+    }
+    
 });
+
