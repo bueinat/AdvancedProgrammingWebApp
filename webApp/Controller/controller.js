@@ -7,7 +7,6 @@ const morgan = require('morgan');
 const _ = require('lodash');
 const edge = require('edge-js');
 const Joi = require('joi');
-const model = require('../Model/model')
 
 const app = express();
 
@@ -34,6 +33,15 @@ app.use(express.static('../View'))
 app.get('/', (req, res) => {
     res.sendFile('index.html')
 })
+
+// get dll and functions
+// original dll path: '../temporary_files/simple_csharp_dll/ClassLibrary1/ClassLibrary1/bin/Debug/ClassLibrary1.dll'
+let dll_name = require('path').join(__dirname, '../Model/model.dll');
+var detect_from_CSVs = edge.func({
+    assemblyFile: dll_name,
+    typeName: 'ClassLibrary1.Startup', // change those names according to the relevant names 
+    methodName: 'LearnCSV' // This must be Func<object,Task<object>>
+});
 
 // send via post 2 csv files + model type (as query) and and get anomaly results
 app.post('/detect', async (req, res) => {
@@ -78,13 +86,22 @@ app.post('/detect', async (req, res) => {
         "model_type": req.query.model_type,
         "passed_data_type": "csv"
     }
-    try {
-        console.log("trying...")
-        res.send(model.detect(data))
-    } catch(e) {
-        console.log("hey")
-        res.status(400).send(`error passed from model: ${error.message}`)
-    }
-    
+
+    // run c# code and return accordingly
+    detect_from_CSVs(data, function (error, result) {
+        if (error) return res.status(400).send(`error passed from model: ${error.message}`)
+        B = {}
+        result.forEach(e => {
+            B[e.description] = new Span(e.firstTimeStep, e.lastTimeStep)
+        });
+        res.send(JSON.stringify(B))
+    })
 });
 
+// span class which defines time span
+class Span {
+    constructor(start_time, end_time) {
+        this.start_time = start_time;
+        this.end_time = end_time;
+    }
+}
