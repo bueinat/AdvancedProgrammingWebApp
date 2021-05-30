@@ -50,7 +50,10 @@ Here is an example of successful request:
 
 ### sending request via web app
 open `http://localhost:8080/` in your browser (if the server is running on your computer). You will see a form you can fill . press Upload and after the algorithm finishes running (it can take a couple of seconds for the regression model and a couple of hours for the hybrid model), you will see a a pretty table with the algorithm's results:
-![Uploading image.png…]()
+![photo_2021-05-30_20-13-09](https://user-images.githubusercontent.com/51541904/120113643-12315980-c184-11eb-9509-809c725b21f2.jpg)
+
+
+
 The table concludes two columns, one for start, one for end. This represents the anomaly and its time. 
 Under the table, there appears a GENERIC chart- graph representing one attribute on X-axes and the other attribute on the Y-axes. The points on the graph represent the times of the anomalies. At this file, the graph contains "fake" data but accessing the csv file and getting the data from there is a simple process that makes the grpah appear nicely. 
 
