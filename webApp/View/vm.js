@@ -55,7 +55,6 @@ function myFunction() {
       document.getElementById('demoHide').style.display = 'block';
       document.getElementById('tableDiv').style.display = 'block';
       showTable44(fromJson);
-      fromJson= [];
     })
     .fail(function (xhr) {
       alert('Error: ' + xhr.responseText);
