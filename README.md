@@ -41,7 +41,7 @@ There are 2 optional ways of sending request.
 ### using tools such as postman for sending requeqst directly to the server
 The request is `detect` and has to be sent this way:
 - one query parameter `model_type` should be sent. It has to be either `regression` or `hybrid`, and no other model types would be accepted. Other query parameters will be ignored.
-- 2 csv files, one's field `learn_csv` and the other's `anomaly_csv`. There is no limit on the files' names, except it should end with `.csv`.
+- 2 csv files, one's field `learn_csv` and the other's `anomaly_csv`. There is no limit on the files' names, except it should end with `.csv`. The files should include *unique* columns names. Plus, the case where the files do not have the same columns had not been tested and may not work.
 
 Here is an example of request: **put image here**.   
 
