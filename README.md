@@ -4,16 +4,16 @@ web app project for advanced programming project in BIU
 
 
 ## Special features
-We used design pattern called mvc, that mean that all the project separate to 3 different parts:<br />
-**The view**  that responsible to the user interface (get the information from the user, and show him the final result).<br />
-**The model** that call to outern libraries like the anomaly detect algorithm to use calculate on the information, and return the result.<br />
-**The controller** that operate the model and the controller, and linking between them.<br />
+We used design pattern called MVC, that means that all the project separate to 3 different parts:<br />
+- **The view**  that responsible to the user interface (get the information from the user, and show him the final result).<br />
+- **The model** that call to outern libraries like the anomaly detect algorithm to use calculate on the information, and return the result.<br />
+- **The controller** that operate the model and the controller, and linking between them.<br />
 Another feature is the communication between the user and the program. The program functioning as a server that waiting to requests from the client, that this is the user, who send the information and get the request in http protocol.
 
 ## Directories in the Project<br />
 **Design Details** – consist a file that represent the UML scheme.<br />
 **anomalyDetectionAlgo** – consist mostly the c# files that using to anomaly detection.<br />
-**webApp** – consist the project's primary files. Inside there is directories to the View, to the Model and to the controller, that each of them consist the corresponded parts from the MVC design pattern. The Controller directory consist also the csv files that uploaded to the algorithm.
+**webApp** – consist the project's primary files. Inside there is directories for the View, to the Model and to the controller, that each of them consist the corresponded parts from the MVC design pattern. The Controller directory consist also the csv files that uploaded to the algorithm.
 
 
 ## Installations
