@@ -27,7 +27,6 @@ function myFunction() {
   var algoChoose = document.getElementById("algo").value;
   var withoutPath = document.getElementById("CSVwithoutPath");
   var withPath = document.getElementById("CSVwithPath");
-  //document.getElementById("demo").innerHTML = "The choosen algo is: var = " + algoChoose + " path1: " + withoutPath + " path2: " + withPath;
   var form = new FormData();
   form.append("model_type", "hybrid");
   form.append("anomaly_csv", withPath.files[0]);
@@ -44,7 +43,6 @@ function myFunction() {
   };
 
   $.ajax(settings).done(function (response) {
-      console.log(response);
       var someData = JSON.parse(response);
       var fromJson = [];
 
@@ -57,6 +55,7 @@ function myFunction() {
       document.getElementById('demoHide').style.display = 'block';
       document.getElementById('tableDiv').style.display = 'block';
       showTable44(fromJson);
+      fromJson= [];
     })
     .fail(function (xhr) {
       alert('Error: ' + xhr.responseText);
