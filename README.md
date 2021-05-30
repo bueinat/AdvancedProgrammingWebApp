@@ -44,7 +44,8 @@ The request is `detect` and has to be sent this way:
 - 2 csv files, one's field `learn_csv` and the other's `anomaly_csv`. There is no limit on the files' names, except it should end with `.csv`. The files should include *unique* columns names. Plus, the case where the files do not have the same columns had not been tested and may not work.
 
 Here is an example of successful request:
-![image](https://user-images.githubusercontent.com/62245924/120105789-257ffd00-c163-11eb-9326-6716b5c9b097.png)
+![photo_2021-05-30_20-13-09](https://user-images.githubusercontent.com/51541904/120113514-81f31480-c183-11eb-9540-91a4a622f927.jpg)
+
 
 
 ### sending request via web app
