@@ -3,21 +3,18 @@
 web app project for advanced programming project in BIU
 
 
-פיצ'רים מיוחדים- ארכיטקטורת MVC, תקשורת בעזרת בקשות http ושרת שמאזין להם ובסוף שולח תשובה. המידע נשלח כקובץ JSON.
+## Special features
+We used design pattern called MVC, that means that all the project separate to 3 different parts:<br />
+- **The view**  that responsible to the user interface (get the information from the user, and show him the final result).<br />
+- **The model** that call to outern libraries like the anomaly detect algorithm to use calculate on the information, and return the result.<br />
+- **The controller** that operate the model and the controller, and linking between them.<br />
+Another feature is the communication between the user and the program. The program functioning as a server that waiting to requests from the client, that this is the user, who send the information and get the request in http protocol.
 
-תיקיות בפרויקט:
-REST_API  
-בתוכה יש:
-* את view תיקייה שבה יש את הקבצים vm.js, וindex.html שאחראים על התצוגה של הממשק משתמש
-upload*- תיקייה שבה יש קבצי csv שניתן ללמוד אותם ולבדוק בהם חריגות
-*api.js – קובץ שמכיל גם את המודל וגם את הקונטרולר (עינת צריכה לפצל אותו ל2 נפרדים)
-*result.html, result.js- נעה אמרה לי שהם מיותרים ואפשר למחוק אותם
+## Directories in the Project<br />
+**Design Details** – consist a file that represent the UML scheme.<br />
+**anomalyDetectionAlgo** – consist mostly the c# files that using to anomaly detection.<br />
+**webApp** – consist the project's primary files. Inside there is directories for the View, to the Model and to the controller, that each of them consist the corresponded parts from the MVC design pattern. The Controller directory consist also the csv files that uploaded to the algorithm.
 
-temporary_filed
-בתוכה יש את הקבצים שמשמשים לזיהוי החריגות (כנראה שנשנה עוד את השם שלה וקצת את התוכן שלה)
-
-התקנות:
-ניתן להשתמש בתוכנה node.js ולפני זה להתקין בו את ההתקנות הבאות:
 
 ## Installations
 The only required platform for running the server is `node`. You can download it in their website: https://nodejs.org/   
@@ -44,9 +41,14 @@ There are 2 optional ways of sending request.
 ### using tools such as postman for sending requeqst directly to the server
 The request is `detect` and has to be sent this way:
 - one query parameter `model_type` should be sent. It has to be either `regression` or `hybrid`, and no other model types would be accepted. Other query parameters will be ignored.
-- 2 csv files, one's field `learn_csv` and the other's `anomaly_csv`. There is no limit on the files' names, except it should end with `.csv`.
+- 2 csv files, one's field `learn_csv` and the other's `anomaly_csv`. There is no limit on the files' names, except it should end with `.csv`. The files should include *unique* columns names. Plus, the case where the files do not have the same columns had not been tested and may not work.
 
-Here is an example of request: **put image here**.   
+Here is an example of successful request:
+![image](https://user-images.githubusercontent.com/62245924/120105789-257ffd00-c163-11eb-9326-6716b5c9b097.png)
+
 
 ### sending request via web app
 open `http://localhost:8080/` in your browser (if the server is running on your computer). You will see a form you can fill **put here an image of the form**. press Upload and after the algorithm finishes running (it can take a couple of seconds for the regression model and a couple of hours for the hybrid model), you will see a ?? with the algorithm's results. **add an image also here**.
+
+## Further Documentation
+Some extra details about documentation of the code and its construction (such as UML Diagram) can be found [here](https://github.com/bueinat/AdvancedProgrammingWebApp/tree/main/Design%20Details) in this project.
