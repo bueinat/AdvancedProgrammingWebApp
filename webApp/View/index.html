@@ -18,7 +18,7 @@
         e.target.parentNode.className = 'selected';  
 		var value1 = $(".selected td:eq(0)").html();
 		var value2 = $(".selected td:eq(1)").html();
-        alert(value1+" "+value2);
+	  document.getElementById('chartContainer').style.display='block';
 		selectionTochart (value1,value2);
     }    
 	var table = document.getElementById('tableDiv'),
@@ -115,7 +115,7 @@ td {border: 1px solid black; padding: 5px; cursor: pointer;}
       </tbody>
     </table>
   </div>
-  <div id="chartContainer" style="width: 100%; height: 400px">
+<div id="chartContainer" style="width: 100%; height: 400px; display:none">
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script src="vm.js"></script>
 </div>
