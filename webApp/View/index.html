@@ -1,68 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Anomaly Detection Server</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Anomaly Detection</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
-<body>
-<!-- Write your comments here  <A HREF="file:///C:\temp\" </A> 
- <a href="C:\">Open</a>-->
- <style>
-  .container {
-    height: 200px;
-    position: relative;
-    border: 3px solid green;
-  }
-  
+<script type="text/javascript">
+  window.onload = function () {
+	 window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 
-  .center {
+  
+  function highlight(e) {
+        if (selected[0]) selected[0].className = '';
+        e.target.parentNode.className = 'selected';  
+		var value1 = $(".selected td:eq(0)").html();
+		var value2 = $(".selected td:eq(1)").html();
+        //var value = value1 || "No row Selected";
+        alert(value1+" "+value2);
+		selectionTochart (value1,value2);
+    }    
+	var table = document.getElementById('tableDiv'),
+       selected = table.getElementsByClassName('selected');
+    table.onclick = highlight;
+	  var getHighlightRow = function() {
+        return $('table > tbody > tr.highlight');
+      }
+//	var rows = getHighlightRow();
+  //      if (rows != undefined) {
+   //       alert(rows.attr('id'));
+    //    }
+	 
+   }
+  </script>
+<body style="background-color:rgba(218, 221, 234, 1);">
+ <style>
+
+
+ .center {
+  height: 200px;
   margin: 0;
   position: absolute;
-  top: 30%;
+  top: 20%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-  </style>
+h1 {
+text-align: center;
+font-family: verdana;}
+.btn {
+  background: transparent;
+  border: 2px solid black;
+  
+  text-align: center;
+  font-family: verdana;
+}
+
+.grid-con {
+  border: 10px outset transparent;
+  text-align: center;
+  font-family: verdana;
+}
+
+td {border: 1px solid black; padding: 5px; cursor: pointer;}
+
+.selected {
+    background-color: #6D78AD;
+    color: #FFF;
+}
+
+ </style>
 <div class="center">
+<div class="grid-con">
+  	<h1>Welecome to flight anomalies detection</h1>
+	</div>
   <div class="grid-con">
-  	<label for="Algo">Choose an Algorithm:</label>
+  	<label id="chooseAlgoLabel" for="Algo">please choose an Algorithm:</label>
+	</div>
+  <div class="grid-con">
 	<select name="algo" id="algo">
-  	<option value="reg">Reg</option>
+  	<option value="regression">regression</option>
   	<option value="hybrid">Hybrid</option>
 	</select>
   </div>
   <div class="grid-con">
-   <!-- <label for="Algo">Choose CSV without (path):</label>
-    <input type="text" id="CSVwithoutPath" value="Enter CSV without file path"> -->
-    <label for="CSVwithoutPath">anomaly</label>
+    <label id="csvWithoutLabel" for="CSVwithoutPath">please enter a CSV file without anomalies:</label>
+</div>
+<div class="grid-con">
 <input type="file" id="CSVwithoutPath" name="myfile">
   </div>
   <div class="grid-con">
-    <!-- <label for="Algo">Choose CSV with (path):</label>
-    <input type="text" id="CSVwithPath" value="Enter CSV with file path"> -->
-    <label for="CSVwithPath">Choose CSV 2</label>
-    <input type="file" id="CSVwithPath" name="myfile">
+   <label id="csvWithLabel" for="CSVwithPath">please enter a CSV file that might have anomalies:</label>
+    </div>
+<div class="grid-con">
+	<input type="file" id="CSVwithPath" name="myfile">
   </div>
   <div class="grid-con">
-    <button type="button" onclick="myFunction()">
+    <button class="btn" type="button" onclick="myFunction()" >
       Upload
     </button>
   </div>
   <div class="grid-con">
   	<p id="demoHide" style="display:none">The anomalies are:</p>
   </div>
-</div>
 <div class="grid-con">
-<h2>Saved to varibales</h2>
-
-<p id="demo">The choosen algo is:</p>
-
+  	<table id="tableDiv" style="display:none">
+      <thead>
+        <tr>
+          <td>Attribute 1</td>
+          <td>Attribute 2</td>
+          <td>Start</td>
+          <td>End</td>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <div id="chartContainer" style="width: 100%; height: 400px">
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script src="vm.js"></script>
-<!-- <body onLoad="buildHtmlTable('#excelDataTable')">
-    <table id="excelDataTable" border="1px">
-    </table> -->
-</div>
 </div>
 </body>
 </html>
