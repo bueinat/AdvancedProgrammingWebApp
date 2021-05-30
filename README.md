@@ -44,13 +44,13 @@ The request is `detect` and has to be sent this way:
 - 2 csv files, one's field `learn_csv` and the other's `anomaly_csv`. There is no limit on the files' names, except it should end with `.csv`. The files should include *unique* columns names. Plus, the case where the files do not have the same columns had not been tested and may not work.
 
 Here is an example of successful request:
-![photo_2021-05-30_20-13-09](https://user-images.githubusercontent.com/51541904/120113514-81f31480-c183-11eb-9540-91a4a622f927.jpg)
+![image](https://user-images.githubusercontent.com/62245924/120116830-aefaf380-c192-11eb-9091-a55f48fe7fc1.png)
 
 
 
 ### sending request via web app
-open `http://localhost:8080/` in your browser (if the server is running on your computer). You will see a form you can fill . press Upload and after the algorithm finishes running (it can take a couple of seconds for the regression model and a couple of hours for the hybrid model), you will see a a pretty table with the algorithm's results:
-![photo_2021-05-30_20-13-09](https://user-images.githubusercontent.com/51541904/120113643-12315980-c184-11eb-9509-809c725b21f2.jpg)
+open `http://localhost:8080/` in your browser (if the server is running on your computer). You will see a form you can fill. Press Upload and after the algorithm finishes running (it can take a couple of seconds for the regression model and a couple of hours for the hybrid model), you will see a a pretty table with the algorithm's results:
+![image](https://user-images.githubusercontent.com/62245924/120116848-d225a300-c192-11eb-98a2-8448f781c9be.png)
 
 
 
