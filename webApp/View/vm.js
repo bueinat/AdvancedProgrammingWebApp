@@ -67,7 +67,19 @@ function myFunction() {
  * @param {*} attri1 this is one attribute
  * @param {*} attri2 this is the second attribute
  */
-function selectionTochart(attri1, attri2) {}
+function selectionTochart (attri1, attri2){
+   var data = [{
+       type: "line",
+       dataPoints: [
+         { x: 1, y: 450 },
+         { x: 2, y: 414},
+         { x: 3, y: 520},
+         { x: 4, y: 460 },
+         { x: 5, y: 450 }
+       ]
+     }];
+     renderChart(data, attri1, attri2);
+ }
 
 /**
  * This function is creating a chart
