@@ -10,7 +10,7 @@ We used design pattern called mvc, that mean that all the project separate to 3 
 **The controller** that operate the model and the controller, and linking between them.<br />
 Another feature is the communication between the user and the program. The program functioning as a server that waiting to requests from the client, that this is the user, who send the information and get the request in http protocol.
 
-## Directories in the project:<br />
+## Directories in the Project<br />
 **Design Details** – consist a file that represent the UML scheme.<br />
 **anomalyDetectionAlgo** – consist mostly the c# files that using to anomaly detection.<br />
 **webApp** – consist the project's primary files. Inside there is directories to the View, to the Model and to the controller, that each of them consist the corresponded parts from the MVC design pattern. The Controller directory consist also the csv files that uploaded to the algorithm.
@@ -43,7 +43,12 @@ The request is `detect` and has to be sent this way:
 - one query parameter `model_type` should be sent. It has to be either `regression` or `hybrid`, and no other model types would be accepted. Other query parameters will be ignored.
 - 2 csv files, one's field `learn_csv` and the other's `anomaly_csv`. There is no limit on the files' names, except it should end with `.csv`. The files should include *unique* columns names. Plus, the case where the files do not have the same columns had not been tested and may not work.
 
-Here is an example of request: **put image here**.   
+Here is an example of successful request:
+![image](https://user-images.githubusercontent.com/62245924/120105789-257ffd00-c163-11eb-9326-6716b5c9b097.png)
+
 
 ### sending request via web app
 open `http://localhost:8080/` in your browser (if the server is running on your computer). You will see a form you can fill **put here an image of the form**. press Upload and after the algorithm finishes running (it can take a couple of seconds for the regression model and a couple of hours for the hybrid model), you will see a ?? with the algorithm's results. **add an image also here**.
+
+## Further Documentation
+Some extra details about documentation of the code and its construction (such as UML Diagram) can be found [here](https://github.com/bueinat/AdvancedProgrammingWebApp/tree/main/Design%20Details) in this project.
