@@ -18,20 +18,15 @@
         e.target.parentNode.className = 'selected';  
 		var value1 = $(".selected td:eq(0)").html();
 		var value2 = $(".selected td:eq(1)").html();
-        //var value = value1 || "No row Selected";
         alert(value1+" "+value2);
 		selectionTochart (value1,value2);
     }    
 	var table = document.getElementById('tableDiv'),
        selected = table.getElementsByClassName('selected');
-    table.onclick = highlight;
+    	table.onclick = highlight;
 	  var getHighlightRow = function() {
         return $('table > tbody > tr.highlight');
       }
-//	var rows = getHighlightRow();
-  //      if (rows != undefined) {
-   //       alert(rows.attr('id'));
-    //    }
 	 
    }
   </script>
