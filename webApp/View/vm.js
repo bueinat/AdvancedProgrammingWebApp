@@ -30,8 +30,8 @@ function myFunction() {
   //document.getElementById("demo").innerHTML = "The choosen algo is: var = " + algoChoose + " path1: " + withoutPath + " path2: " + withPath;
   var form = new FormData();
   form.append("model_type", "hybrid");
-  form.append("anomaly_csv", withoutPath.files[0]);
-  form.append("learn_csv", withPath.files[0]);
+  form.append("anomaly_csv", withPath.files[0]);
+  form.append("learn_csv", withoutPath.files[0]);
 
   var settings = {
     "url": "http://localhost:8080/detect?model_type=" + document.getElementById('algo').value,
