@@ -4,6 +4,7 @@
  */
 function showTable44(fromJson) {
   const tableBody = document.querySelector('table > tbody');
+  $("#tbodyid").empty();
   fromJson.slice().reverse().forEach(el => {
     const row = tableBody.insertRow(0);
     const cell1 = row.insertCell(0);
